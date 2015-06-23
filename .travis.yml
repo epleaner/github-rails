@@ -2,6 +2,7 @@ language: ruby
 bundler_args: "--without development production"
 rvm:
 - 2.2.2
+sudo: required
 env:
   global:
   - DATABASE_USER=postgres
