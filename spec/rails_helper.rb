@@ -5,8 +5,8 @@ require 'rspec/rails'
 
 require 'capybara/rails'
 require 'capybara/poltergeist'
-Capybara.default_driver = :poltergeist
-#Capybara.default_driver = :selenium
+# Capybara.default_driver = :poltergeist
+Capybara.default_driver = :selenium
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
