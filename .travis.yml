@@ -1,17 +1,24 @@
----
 language: ruby
-bundler_args: --without development production
+bundler_args: "--without development production"
 rvm:
-  - 2.2.2
-
+- 2.2.2
 env:
   global:
-    - DATABASE_USER=postgres
-    - CAPYBARA_WAIT_TIME=8
-
+  - DATABASE_USER=postgres
+  - CAPYBARA_WAIT_TIME=8
 before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 before_script:
-  - bundle exec rake db:setup
+- bundle exec rake db:setup
+deploy:
+  provider:
+    provider: cloudfoundry
+  api: https://api.run.pivotal.io
+  username: epleaner
+  password:
+    secure: V2rwkHGGH66pASmC2N7QI7V9IEI/G4o4t8GsBLmPUPDOkgBCm/hlXVjdeUan8UtSlmzsejQpH5aT5anDHOBXsQLlct+zrKS8R31k5Lw6SOUmm9AOQOTfcITpWNkxY1iIS978/LcKGcvIdwQ0jV+X7EJnbFpXjzloliQw1WobGsFFAtRKmKVO2ezi2w+zqnIe/RrphPalsIiMEYFxe9ER8T7bszwfVpnlyAl7y2acf1HSNccOIU9HHiXjY5+ctcZUdufqO5+fWU03qngComio5CLhWIB3n/As86iSxRzuTcV1E55WxF5IYoHXhcZtH/ImfMgtzuvxiAS3GShOADKwr8/LynT8/GdzkrJCwww07YP83yEOIKAp14mU9wrxwsr8LCxjRarPkL5pHXPihkGvk7gzTJTfDzyBDURgcPtUPFTLc2W5s0Bhmt1Z955FDFI0UWej4ixprBBCfyNGVOoAVuwbXW2bLYZFTXaJga0ngNihFeXwhzE+Lic4cFW0dKokKonIN2xUcFzWZ+4xmlHDyr/GRzy1nQsCAn+GVeVuqlsSDChLX+sFnVb1c0Wsga7LWIjCHIHzslmf9xGxPrnwCwn/UFzR+TfapX1zUTqPTCc7uKcTA0d7kM8IprH/KFljQFNGphujTVWtY536OhquH1hHBqs2AihYr3xhR3aEl5E=
+  organization: Github Rails
+  space: development
+  on:
+    repo: epleaner/github-rails
