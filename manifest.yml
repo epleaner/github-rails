@@ -1,0 +1,7 @@
+---
+applications:
+  - name: github-rails
+    instances: 1
+    memory: 512M
+    services:
+      - postgres
