@@ -12,6 +12,7 @@ before_install:
 before_script:
 - bundle exec rake db:setup
 deploy:
+  edge: true
   provider:
     provider: cloudfoundry
   api: https://api.run.pivotal.io
