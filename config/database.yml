@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  template: template0
+
+development:
+  <<: *default
+  database: github-rails_development
+
+test:
+  <<: *default
+  database: github-rails_test
